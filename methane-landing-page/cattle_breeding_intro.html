@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>The challenges of selectively breeding for low-methane cattle</title>
+  <link rel="stylesheet" href="styles-methane-intro.css">
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']]
+      },
+      svg: {
+        fontCache: 'global'
+      }
+    };
+  </script>
+  <!-- Polyfill for older browsers -->
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <!-- MathJax library -->
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<h1> The challenges of selectively breeding for low-methane cattle </h1>
+<body>
+
+<h2>Brief introduction</h2>
+
+<ol>
+  <li> <p> <strong>Cattle are emissions-intensive:</strong>
+    Roughly 5% of <span class="tooltip">global emissions
+      <span class="tooltiptext">"Global emissions", as measured by the ability to warm the climate over a 100-year period. Using this metric, one ton of methane is equivalent to about 28 tons of carbon dioxide. </span>
+    </span> come from ruminant animals, especially cattle. Each head of cattle emits around 150-250 pounds of methane per year which, using the Biden EPA's social cost of methane, is worth around $120-200 in social damage annually. 
+  </p>
+</li>
+
+<li>
+  <p> <strong>Selective breeding represents one potential tool to reduce this social cost: </strong> Cattle have two sources of natural heterogeneity in their natural production of methane, caused by both 
+    <span class="tooltip">productivity differences
+      <span class="tooltiptext">Larger cows consume more feed and produce more methane, but are also more productive</span>
+    </span> and <span class="tooltip"> idiosyncratic factors.
+      <span class="tooltiptext">We call this component of methane production "residual methane"</span>
+    </span>
+    To date, selective breeding for productivity has dramatically cut the emissions-intensivity of the cattle industry. By improving <span class="tooltip">herd health
+      <span class="tooltiptext">Sick cows produce methane without corresponding economic benefits, so a healthier cow is more methane-efficient per unit of milk/beef</span> 
+    </span> and shortening the period from birth to economic production, emissions per kilogram of milk     <span class="tooltip">declined 55%
+      <span class="tooltiptext"><a href="https://www.sciencedirect.com/science/article/pii/S1751731117002592">Broderick 2018</a></span> 
+    </span> between 1924 and 2014. Ranchers will continue to selectively breed for productivity, but accelerating the pace of methane reduction might require reducing methane even if doing so trades off with productivity. 
+  </p>
+</li>
+
+
+<li><strong>Incorporating methane into selective breeding is relatively straightforward:</strong> Ranchers would need to assemble a "reference herd" of around 4,000 bulls. The breeder would then genotype and phenotype each of these bulls and measure their methane production. Afterwards, they would create a predictive model that maps bull semen to predicted methane emissions. A funder would then attach a subsidy value per unit of predicted methane production below some baseline. Ranchers would be paid for each low-methane cow they include in their herd, with the size of the subsidy proportional to the degree of the methane reduction.  With a financial incentive to care about methane, ranchers would begin by swapping out high-merit for slightly-lower-merit bulls whose lower methane production warrants a large enough subsidy to justify the swap. 
+
+<p></p>
+<details>
+  <summary>See Technical Details</summary>
+  <div>
+    <p>Some formal details. Assume we have a herd of $n$ bulls. Each bull possesses two traits: $merit$ and $methane$. Currently, the rancher will select the top $k\%$ by merit, where $k$ is some low value such as 1%. In other words, the selection index $I$ is equal to </p>
+
+    <p>$$\text{Index}_{\text{old}} = \text{merit}$$</p>
+
+    <p>$$ \mathbb{P} (\text{Index}_{\text{old}} > \text{threshold}_{\text{old}}) = k $$</p>
+
+    <p>Now we add a subsidy per unit of methane so that </p>
+
+    <p>$$\text{Index}_{\text{new}} = \text{merit} + \text{subsidy} $$</p>
+
+    <p>\[
+\text{subsidy} =
+\begin{cases}
+-\lambda \cdot \text{methane}, & \text{if } \text{methane} < \text{threshold}_{\text{new}}, \\
+0, & \text{otherwise.}
+\end{cases}
+\]
+</p>
+
+<p>where $\lambda$ is some weight that the planner sets and $ \mathbb{P} (\text{Index}_{\text{new}} > \text{threshold}_{\text{new}}) = k $</p>
+
+<p> Visually, we can represent the two selection rules below. All bulls to the right of the respective dashed lines would be selected. The larger the weight on methane ($\lambda$), the more horizontal the dashed blue line becomes. The blue line eventually becomes vertical because high-emitting bulls receive no payment, not negative payments. 
+
+
+<img src="images/visualize_selection_rule.png" alt="Selection Visualization">
+
+  </div>
+</details>
+</li>
+</ol>
+
+
+
+
+<h2> Three large problems with cost-effectiveness </h2> 
+
+<ol>
+  <li> <p><strong>Trade-off with productivity: </strong> Even if one chooses to select on the basis of <span class="tooltip">residual methane
+      <span class="tooltiptext">The component of methane variation uncorrelated with productivity</span> 
+    </span>, the new herd will still be lower-merit than a herd that does not care at all about methane. By analogy, a basketball GM who cares only about height will select a taller team than a basketball GM who cares about both height and shooting ability, even if height and shooting are uncorrelated. Less colloquially, every additional factor one adds to the "breeding objective" reduces the extent to which one can optimize for other traits. Moreover, the variation in residual methane is so small compared to the variation in <span class="tooltip">merit<span class="tooltiptext">A.k.a. economic productivity</span> 
+    </span> that only a heavy weighting on methane can induce a major change in rancher behavior. Meanwhile, If one instead selects on the basis of total methane production, one needs to compensate ranchers even further, as lower-methane cattle become, on average, lower in merit as well. </p></li>
+  <li><p><strong>Payments cannot become negative:</strong> Unlike a carbon tax, this subsidy scheme would entirely be voluntary. The scheme organizers cannot collect payments from ranchers using particularly high-methane cattle, and can only offer subsidies to ranchers using low-methane cattle. This restriction both limits the effectiveness of the program (since average cattle and high-methane cattle are treated identically), but also explodes the total cost (since receipts cannot offset any of the net payments). </p></li>
+  <li><p><strong>Large problems with additionality</strong> <span class="tooltip">Additionality<span class="tooltiptext">"Additionality" is often called "infra-marginality" in other contexts</span> 
+    </span> refers to the problem in environmental economics of assessing which changes are directly caused by a program. Payments for low-methane activities that would have occurred in the absence of any subsidy program are "non-additional", and thus wasted. This non-additionality problem is highly acute. By random chance, a rancher with 1000 cows will have around 500 cows with above-average methane production and around 500 cows with below-average methane production. Under the scheme described above, this rancher--who has made no effort to reduce their emissions--could receive payments for those 500 low-methane cows. The program would still have some effect--the rancher has an incentive to marginally reduce their emissions--but the payments would become wildly disproportionate to the actual benefits offered. This problem is severe: in my analysis of Holstein bulls, a hypothetical weight of $160/ton of methane (10% of the social cost) would result in 90% of subsidy dollars going to bulls that would have been selected regardless of the incentive program. Even that number understates the harm, as it does not count extra dollars given to bulls who would have been selected even with a smaller subsidy. </p></li>
+
+</ol>
+Collectively, these problems create an inescapable trade-off. If one uses a small per-ton subsidy, the overwhelming majority of payments will be non-additional. If one uses a large per-ton subsidy, the non-additional share will fall but at great expense that more than offsets. The below charts estimate use real data on the merit distribution for Holstein dairy cows in the US and in Scandinavia, with a ton of reduced methane priced at $1600/ton. Even assuming zero fixed costs (so monitoring, administration, or set-up costs), the benefits per cows are low and the benefit-cost ratio suggests this intervention is not promising. 
+
+<p></p>
+
+<div class="image-container">
+    <img src="images/us_holsteins_four_plots.png" alt="US Holsteins Four Plots">
+    <img src="images/dk_holsteins_four_plots.png" alt="DK Holsteins Four Plots">
+  </div>
+
+
+<h2>The interesting intersection between antagonistic correlation and reduced costs</h2>
+
+Instead of selecting for residual methane, could a funder instead target total methane production? Recall that total methane production positively correlates with economic productivity, so lower-methane cows are, on average, possess lower merit. One large advantage of including total methane is that the natural variation increases dramatically, so reductions of over 25% remains possible (whereas residual methane limits the upside to around 1%). Increasing the level of correlation between methane production and economic productivity has two countervailing effects:
+<ol>
+  <li>Increasing the level of correlation <strong>increases</strong> costs, as the subsidy scheme needs to compensate ranchers for the greater loss of merit from selecting low-methane cows</li>
+  <li>Increasing the level of correlation <strong>lowers</strong> costs, as the loss of cows that are both low-methane and high-merit means payments become inframarginal/non-additional</li>
+</ol>
+
+<p>
+Surprisingly, <strong>the second effect (improved targeting) always dominates the first effect (greater trade-off with merit)</strong>. As a result, increasing the level of antagonistic correlation <span class="tooltip">always<span class="tooltiptext">Some trivial exceptions exist: one could imagine an entirely bimodal distribution where the effects would be identical, as both schemes result in no effect </span> </span> improves the benefit-cost ratio of the intervention. This finding holds even with radically different distributions: normal or non-normal, different variations, etc. Why this effect always holds true remains uncertain. The upshot is that, ironically, more costly interventions can be more cost-effective if they result in superior targeting.
+
+
+
+<div class="image-container">
+    <img src="images/antagonistic_correlation_four_plots.png" alt="Antagonistic correlation">
+    <iframe src="images/visualize_payments_sliders.html" width="800" height="650" style="border: none;"></iframe>
+
+  </div>
+
+Cattle breeding is not the only 
+</body>
+</html>
+
+
