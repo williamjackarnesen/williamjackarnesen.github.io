@@ -9,6 +9,8 @@
       tex: {
         inlineMath: [['$', '$'], ['\\(', '\\)']],
         displayMath: [['$$', '$$'], ['\\[', '\\]']]
+        processEscapes: true
+
       },
       svg: {
         fontCache: 'global'
@@ -103,6 +105,25 @@
 
 </ol>
 Collectively, these problems create an inescapable trade-off. If one uses a small per-ton subsidy, the overwhelming majority of payments will be non-additional. If one uses a large per-ton subsidy, the non-additional share will fall but at great expense that more than offsets. The below charts estimate use real data on the merit distribution for Holstein dairy cows in the US and in Scandinavia, with a ton of reduced methane priced at $1600/ton. Even assuming zero fixed costs (so monitoring, administration, or set-up costs), the benefits per cows are low and the benefit-cost ratio suggests this intervention is not promising. 
+
+<p></p>
+<details>
+  <summary>See Technical Details</summary>
+  <p></p>
+  Below is a brief description of the real-life modeling for residual methane.
+  <ol>
+    <li>First, take the distribution of merit from the <a href="https://webconnect.uscdcb.com/#/top-animal-listing">Council on Dairy Cattle Breeding</a> and <a href="https://nordic.mloy.fi/navbull?breed=HOL&country=AllCountries&herdbookCountry=DNK&-progenyTest=WithDFS&orderBy=NTM&desc&pageSize=14626 ">Nordic Cattle Genetic Evaluation</a> for the month of December 2024.</li>
+    <li>For each bull in the real data, randomly generate an associated residual methane value, assuming a normal distribution and a standard deviation of 50.8 g/day of residual methane by following <a href="https://www.sciencedirect.com/science/article/pii/S002203022100597X">Manzanilla-Pech et al. 2021</a></li>
+    <li>Assume a subsidy on methane equivalent to 5%, 10%, 15%, of the social cost of methane. Assume a selection intensity of 1% (so only the top 1% of bulls are selected). Assign a potential subsidy to each bull equal to the weight on methane times the level of residual methane reduction below zero. Compare the herd selected using the old rule (merit only) with the herd selected using the new rule (merit plus subsidy). The difference in expected methane is the social gain, while the social cost is the total subsidy. Subsidies given to bulls that are selected under both rules are considered infra-marginal (this measure undercounts true inframarginality, as it excludes extra payments made to bulls who could have been selected with a smaller positive payment)</li>
+    <li>Repeat steps two and three 100 times for each weight on methane. The values reported below are the average of the 100 simulations.</li>
+  </ol>
+
+  In a later section, we examine total methane production, using simulated herds. In this case, we assume a herd of 10,000 bulls, a mean merit of &#36;10,000, a standard deviation of merit of &#36;71.93, a mean methane production of 5,000 kg/bull (CO2-equivalent) and a standard deviation of methane production of 290.47 kg. We then vary both the weight on methane in the selection index and the extent to which merit and methane production positively correlate.
+  <div>
+   
+
+  </div>
+</details>
 
 <p></p>
 
