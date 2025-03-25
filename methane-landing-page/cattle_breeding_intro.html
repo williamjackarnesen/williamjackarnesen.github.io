@@ -69,13 +69,13 @@
     <p>\[
 \text{subsidy} =
 \begin{cases}
--\lambda \cdot \text{methane}, & \text{if } \text{methane} < \text{threshold}_{\text{new}}, \\
+-\lambda \cdot \text{methane}, & \text{if } \text{methane} < \text{threshold}_{\text{methane}}, \\
 0, & \text{otherwise.}
 \end{cases}
 \]
 </p>
 
-<p>where $\lambda$ is some weight that the planner sets and $ \mathbb{P} (\text{Index}_{\text{new}} > \text{threshold}_{\text{new}}) = k $</p>
+<p>where $\lambda$ is some weight that the planner sets, $\text{threshold}_{\text{methane}} is the maximum methane production eligible for subsidy (set by the planner), $\text{threshold}_{\text{new}})$ is the index threshold for selection, and $ \mathbb{P} (\text{Index}_{\text{new}} > \text{threshold}_{\text{new}}) = k $</p>
 
 <p> Visually, we can represent the two selection rules below. All bulls to the right of the respective dashed lines would be selected. The larger the weight on methane ($\lambda$), the more horizontal the dashed blue line becomes. The blue line eventually becomes vertical because high-emitting bulls receive no payment, not negative payments. 
 
