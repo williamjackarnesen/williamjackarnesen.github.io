@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Practical methods for incorporating subsidy passthrough into AMC sizing estimates</title>
+  <link rel="stylesheet" href="styles-passthrough.css">
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']]
+      },
+      svg: {
+        fontCache: 'global'
+      }
+    };
+  </script>
+  <!-- Polyfill for older browsers -->
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <!-- MathJax library -->
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<h1> Practical methods for incorporating subsidy passthrough into AMC sizing estimates</h1>
+<body>
+<div class="embed-container">
+
+  <h2>The problem with passthrough</h2>
+
+  <p>Our <a href="https://williamjackarnesen.github.io/msa-amc-sizing/">existing method</a> estimating the appropriate size of an <span class="tooltip">advance market commitment (AMC)
+      <span class="tooltiptext">An advance market commitment (AMC) is a legally binding obligation to provide a top-up subsidy per unit sold. The size of the AMC needs to sufficiently large that firms find investing in expensive and risky research, development, and production profitable, and needs to compensate for the large time delay between upfront costs incurred and the receipt of the AMC subsidies (which are only received when the product is sold, which could be many years later)</span> </span> assumes that the innovative firm receives the entirety of the subsidy pool, with no effect on the <span class="tooltip">price of the novel good sold
+      <span class="tooltiptext">The original pneumococcal AMC imposed a price cap on goods sold by companies who accepted the AMC funding.</span> </span>. For example, this model assumes that a three dollar per-unit subsidy would increase the profit per good sold by precisely three dollars.
+  </p>
+
+  <p>This assumption is transparently erroneous. Absent <span class="tooltip">binding supply constraints
+      <span class="tooltiptext">If there is a legal or hard physical restriction on producing more, this effect may not occur.</span> </span>, increasing the profitability per good sold will induce firms to produce more. Assuming a <span class="tooltip">downward-sloping demand curve <span class="tooltiptext">In other words, people consume more when the price is lower.</span> </span>, greater supply will in turn induce lower prices. By driving prices lower, the firm captures only part of the subsidy, while consumers capture the rest. A three dollar per-unit subsidy will not increase profit per good sold by three dollars, but instead some unknown value less than three dollars. We consider the transmission of the subsidy to the consumer the problem of <i>subsidy passthrough</i>.</p>
+
+<p>In extreme cases, the passthrough could entirely eliminate the value of the subsidy. Imagine a highly stylized market for an undifferentiated good with two identical producers with a constant cost of production of two dollars per unit. These producers are engaging in Bertrand competition, where their sole decision is to determine the price of the good and then let the market determine how much quantity is demanded at that price.  These producers will each sell this good for two dollars per unit, at no profit. If one producer defected and sold at some higher price (e.g. \$3 a unit), their rival can steal the entire market by charging slightly less (e.g. \$2.99). As a result, the dominant strategy for both is to sell at their cost of production. If the government then introduced a subsidy per unit sold, these firms will just lower prices by the precise amount equivalent to the subsidy. For instance, suppose the government created a \$0.75 subsidy. If a producer keeps their price at \$2 a unit, their rival could profitably undercut them by charging a slightly lower price, since their "effective" cost of production is now only \$1.25 (cost of production minus the subsidy). The dominant strategy is to just fully "pass on" the subsidy to consumers. This subsidy was not useless: the lower price benefits consumers and expands access. But the subsidy does not increase firm profitability. </p>
+
+<p>In normal circumstances, subsidy passthrough is a core objective of the funder. The goal of the subsidy is to lower prices for consumers, not boost profitability for the suppliers. But AMCs are different. AMCs are well-suited for cases where expected prices are <i>too low</i> to justify risky and expensive research and development efforts, not just cases where prices are <span class="tooltip">too high <span class="tooltiptext">AMCs still can be used in cases where prices are too high, as the funder can impose a binding price cap on any firm who accepts the AMC funds.</span> </span>. For example, in the case of socially valuable goods like carbon capture, consumers' <span class="tooltip">low willingness-to-pay <span class="tooltiptext">Consumers have low willingness-to-pay for public goods like carbon capture because the benefits (a lower temperature world) are distributed across all eight billion people on the planet, while the costs are entirely concentrated in the payer. </span> </span> means that firms have little incentive to spend money on research and development (R&D). If every increase in the subsidy simply translated one-to-one into lower prices, the subsidy will not affect the expected profitability of R&D investment.</p>
+
+<p>In reality, subsidy passthrough is highly unlikely to be 100%. One study of electric vehicle subisides found pass-through rates between <a href="https://panlebarwick.github.io/papers/GlobalEVPassThrough.pdf">70-80%</a>. Another study of Medicare Part D subsidies found a passthrough rate of around <a href="https://www.sciencedirect.com/science/article/abs/pii/S0047272721000372">40%</a> In general, the most important factor is the <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2335157">relative elasticities of demand and supply</a>. In the above (extreme example), supply was perfectly <span class="tooltip">elastic<span class="tooltiptext">"Elasticity" is the measure of how much one economic variable responds to changes in another. A perfectly elastic supply means that the supply curve is horizontal: producing more (or less) does not change the per-unit cost of production. An inelastic supply means the supply curve is vertical: producers will produce the exact same amount regardless of demand and price. </span> </span> and thus the passthrough rate was 100%. In contrast, if demand is perfectly <span class="tooltip">elastic<span class="tooltiptext">"Elasticity" is the measure of how much one economic variable responds to changes in another. A perfectly elastic demand means that the demand curve is vertical. If the price fell slightly, consumers would demand infinitely more. Perfectly inelastic demand means the demand curve is horizontal: consumers will demand the exact same amount of the good regardless of price.</span> </span>, the passthrough rate will be 0%. </p>   
+
+<p>The particular outcome one wishes to avoid is a scenario where multiple firms respond to the AMC and succeed at producing a novel product eligible for AMC funding, and competition between those two firms drives the subsidy passthrough rate to 100%. In this case, estimates produce highly unstable results. If one firm succeeds, that firm captures the entire subsidy. If two (or more) firms succeed, then the subsidy is entirely passed through to consumers. Anticipating this dynamic, firms will be highly reticent to enter, decreasing the probability that any firm succeeds. A small AMC that induces only a single firm to respond might still work as before, but increasing the AMC in order to broaden participation and induce multiple attempts at innovation might become highly cost-ineffective. For the most pressing problems, AMC designers want multiple "shots on goal" and want multiple firms pursuing disparate attempts, in hopes that at least one of them eventually succeeds. This dynamic becomes untenable with high passthrough rates. </p>
+
+<h2>Incorporating passthrough into AMC sizing</h2>
+
+<p>This problem is principally empirical. Unfortunately, because AMCs deal with products that <i>do not yet exist</i>, estimating the precise demand and supply elasticities is impossible. Indeed, well-designed AMCs should encompass a wide variety of possible solutions to a problem, and each of these solutions might have different cost structures and supply curves. We thus need some kind of <i>approximation method</i> or, more realistically, rule of thumb, to incorporate passthrough into AMC sizing models.</p>
+
+<p>Specifically, we are interested in the question of: how do profits change when the number of firms in the market go from one to two? In the <a href="https://williamjackarnesen.github.io/msa-amc-sizing/">existing model</a>, doubling the number of firms cuts the profit per fim in half. A monopolist gets 100% of the total pool of money, a duopolist gets 50%, a triopolist 33.3%, etc. But, as above, this assumption is inaccurate for two reasons. First, competition induces firms to pass some of the subsidy onto the consumer, so a duopolist should get less than 50% of the profit of a monopolist.  Second, competition induces firms to expand supply, by weakening the incentive for <span class="tooltip">strategic withholding<span class="tooltiptext">With a downwardly-sloping demand curve, every additional unit sold lowers the price per good. If a firm cannot price-discriminate (i.e. they must charge the same price to everyone), selling one additional unit lowers the price they receive for all the other units they sell too. As a result, monopolists have an incentive to withhold some supply they could otherwise profitably produce in order to maximize their profits.</span> </span>, which may increase total profits.  </p>
+
+<p>Let us start by assuming Cournot competition, where firms decide the amount of quantity to produce and then the market sets the price. This model of competition hews more closely to reality for manufactured goods where capacity (e.g. the size of the factory) must be installed ahead of time; firms cannot costlessly and instantaneously ramp up their supply. The precise number depends on the exact slope of the supply and demand curve, but in general, the Cournot model produces a roughly 55% reduction in profit when moving from one to two firms.</p>
+
+
+<p></p>
+<details>
+  <summary>See Technical Details</summary>
+  <div>
+    <p>Assume a linear demand curve of the form $P(q) = a - b \cdot q$  where $P$ represents price, $a$ and $b$ are constants, and $q$ is the quantity set. The cost of production is constant at $c$ and the subsidy is $s$.</p>
+
+    <p>Profit $\pi$ for a monopolist is set by the formula $\pi = (p - c + s) \cdot q$</p>
+
+    <p>We can plug in the formula for p we found above and get $\pi = (a - b \cdot q - c + s) \cdot q$</p>
+
+    <p>This expands out to $\pi = a \cdot q - b \cdot q^2 - c \cdot q + s \cdot q$ </p>
+
+    <p>To maximize profit, we take the derivative of profit with respect to quantity, which is $\frac{d\pi}{dq} = a - 2 \cdot b \cdot q  - c + s$, and set equal to 0.</p>
+
+    <p>In the end, we get $q = \frac{a - c + s}{2b}$</p>
+
+    <p>Plug that value of $q$ into our formula for profit and we get $\pi = \frac{(a-c+s)^2}{4 \cdot b}$ </p>
+
+    <p>How about for a duopolist? Much of the set up is the same, except that $q = q_1 + q_2$ and the firm can only control $q_1$. So we have $\pi_1 = (a - b \cdot (q_1 + q_2) - c + 2) \cdot q_1$ </p>
+
+    <p>Because only $q_1$ is under our control, we take the derivative of $\pi$ with respect to $q_1$ and get $\frac{d\pi}{dq_1} = a -2 \cdot b \cdot q_1 - b \cdot q_2 - c + 2 = 0 $</p>
+
+    <p>Since both firms are identical, we can now say $q_1 = q_2$. We can thus solve for $q_1 = \frac{a - c + 2}{3 \cdot b}$. Note that this results in a per-firm quantity $\frac{2}{3}$ of the monopolist quantity (and a total quantity that's $\frac{4}{3}$ as large).</p>
+
+    <p>Plugging into the formula for profit, we get $\pi_q = \frac{(a-c+2)^2}{9 \cdot b}$. We can thus see that the profit is $\frac{4}{9}$ as large with the duopolist as with the monopolist firm.</p>
+
+    <p>This result is not unique to linear demand functions. "Normal-looking" exponential or logarithmic demand functions that are standard in the literature all will produce very similar results. The sole exception will be "unusual" looking demand curves (e.g. perfectly elastic or inelastic demand, or step-wise functions, etc.)</p>
+</div> </details>
+
+<p></p>
+
+Installing a 10-20% premium on top of the existing model would be an over-simplification, though not a terribly inaccurate one. A small AMC where the probability of multiple successful winners is very low will need little premium. A large AMC where one targets a high probability of success (and thus a high probability of duplication) will need a larger premium.
+</body>
+</html>
+
